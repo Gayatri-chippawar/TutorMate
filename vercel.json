@@ -1,14 +1,5 @@
+
 {
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api.py"
-    },
-    {
-      "source": "/((?!api/|assets/|favicon.ico).*)",
-      "destination": "/index.html"
-    }
-  ],
   "builds": [
     {
       "src": "api.py",
@@ -20,6 +11,19 @@
       "config": {
         "distDir": "dist"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api.py"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
