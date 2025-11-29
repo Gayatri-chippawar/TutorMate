@@ -11,3 +11,4 @@ jupyter
 fastapi
 uvicorn
 python-multipart
+pydantic
