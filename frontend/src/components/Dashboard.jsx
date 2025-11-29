@@ -26,7 +26,7 @@ const Dashboard = ({ user, onStartChat }) => {
                     return;
                 }
 
-                const response = await axios.get(`http://localhost:8000/dashboard/${userId}`);
+                const response = await axios.get(`/api/dashboard/${userId}`);
                 setStats(response.data.stats);
                 setRecentSessions(response.data.recent_sessions);
             } catch (error) {

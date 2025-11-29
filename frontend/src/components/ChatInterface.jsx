@@ -25,7 +25,7 @@ const ChatInterface = ({ subject, difficulty, gradeLevel, onComplete }) => {
         const startSession = async () => {
             setLoading(true);
             try {
-                const response = await axios.post('http://localhost:8000/chat/start', {
+                const response = await axios.post('/api/chat/start', {
                     subject,
                     difficulty,
                     grade_level: gradeLevel
@@ -53,7 +53,7 @@ const ChatInterface = ({ subject, difficulty, gradeLevel, onComplete }) => {
         try {
             const history = messages.map(m => ({ role: m.role, content: m.content }));
 
-            const response = await axios.post('http://localhost:8000/chat/message', {
+            const response = await axios.post('/api/chat/message', {
                 session_id: "demo_session",
                 message: userMessage,
                 history: history,

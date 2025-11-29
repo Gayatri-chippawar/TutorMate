@@ -17,7 +17,7 @@ const AnalysisView = ({ onRestart, sessionData, user, onBackToDashboard }) => {
             setLoading(true);
             try {
                 const userId = user?.id || user?.user_id || user?._id;
-                const response = await axios.post('http://localhost:8000/chat/analyze', {
+                const response = await axios.post('/api/chat/analyze', {
                     user_id: userId,
                     session_data: sessionData || {
                         subject: "General",

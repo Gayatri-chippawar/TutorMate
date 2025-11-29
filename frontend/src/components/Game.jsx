@@ -21,7 +21,7 @@ const Game = ({ user }) => {
         try {
             setLoading(true);
             const userId = user.id || user.user_id || user._id;
-            const response = await axios.get(`http://localhost:8000/game/current?user_id=${userId}`);
+            const response = await axios.get(`/api/game/current?user_id=${userId}`);
             setGameData(response.data);
             setTimeLeft(response.data.time_remaining);
 
@@ -90,7 +90,7 @@ const Game = ({ user }) => {
 
         try {
             const userId = user.id || user.user_id || user._id;
-            const response = await axios.post('http://localhost:8000/game/submit', {
+            const response = await axios.post('/api/game/submit', {
                 user_id: userId,
                 window_id: gameData.window_id,
                 answer: answerPayload

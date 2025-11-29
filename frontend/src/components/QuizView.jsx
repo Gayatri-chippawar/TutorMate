@@ -34,11 +34,11 @@ const QuizView = () => {
 
             // We need to upload quiz and responses. For simplicity in this UI demo, 
             // we'll assume the user is uploading the "responses.json" and the quiz is already there.
-            await axios.post('http://localhost:8000/ingest/responses', formData, {
+            await axios.post('/api/ingest/responses', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
 
-            const diagResponse = await axios.post('http://localhost:8000/diagnose');
+            const diagResponse = await axios.post('/api/diagnose');
             setDiagnosis(diagResponse.data);
             setStep('diagnosis');
         } catch (error) {
@@ -52,7 +52,7 @@ const QuizView = () => {
     const startPractice = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:8000/practice');
+            const response = await axios.get('/api/practice');
             setPracticeSet(response.data);
             setStep('practice');
         } catch (error) {
@@ -74,7 +74,7 @@ const QuizView = () => {
     const submitQuiz = async () => {
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/submit_practice', answers);
+            const response = await axios.post('/api/submit_practice', answers);
             setResults(response.data);
             setStep('results');
         } catch (error) {
